@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: Diseño Web y Mejores Prácticas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables y reset */
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #2b2d42;
+            --success: #4cc9f0;
+            --warning: #f9c74f;
+            --text: #2b2d42;
+            --text-light: #6c757d;
+            --gradient-primary: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+            --gradient-accent: linear-gradient(135deg, #f72585 0%, #b5179e 100%);
+            --gradient-success: linear-gradient(135deg, #4cc9f0 0%, #4895ef 100%);
+            --gradient-warning: linear-gradient(135deg, #f9c74f 0%, #f8961e 100%);
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #f9f9f9;
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        
+        /* Tipografía */
+        h1, h2, h3, h4 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin-top: 3rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+        }
+        
+        h3 {
+            font-size: 1.6rem;
+            color: var(--primary);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,224L48,213.3C96,203,192,181,288,160C384,139,480,117,576,122.7C672,128,768,160,864,170.7C960,181,1056,171,1152,165.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: bottom;
+        }
+        
+        header h1 {
+            color: white;
+            font-size: 3.5rem;
+            position: relative;
+        }
+        
+        header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.95);
+            position: relative;
+        }
+        
+        header h1:after {
+            background: var(--accent);
+        }
+        
+        /* Tarjetas de elementos de diseño */
+        .design-elements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .design-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .design-card:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+            z-index: -1;
+            transition: var(--transition);
+        }
+        
+        .design-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .design-card:hover:after {
+            height: 100%;
+            opacity: 0.05;
+        }
+        
+        .design-card h3 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            color: var(--primary);
+        }
+        
+        .design-card h3 span {
+            margin-right: 12px;
+            font-size: 2rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Secciones de mejores prácticas */
+        .best-practices {
+            margin: 4rem 0;
+        }
+        
+        .practice-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid var(--accent);
+        }
+        
+        .practice-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            height: 120px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%234361ee' fill-opacity='0.05' d='M256 0c-17.7 0-32 14.3-32 32V64c-106 0-192 86-192 192c0 49.2 18.5 94 48.9 128H64c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c61.9 0 112-50.1 112-112c0-40.1-21.1-75.3-52.7-95.1l18.6-74.3 51.6 12.4c11.9 3 24.2-3.9 28.1-15.8s-3.9-24.2-15.8-28.1l-64-15.4c-7.2-1.7-14.7-.5-20.9 3.4c-6.2 3.9-10.5 9.9-12.1 16.7l-20.3 81.3C150.8 149.6 128 183.9 128 224c0 53 43 96 96 96h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V384h16c61.9 0 112-50.1 112-112c0-40.1-21.1-75.3-52.7-95.1l18.6-74.3 51.6 12.4c11.9 3 24.2-3.9 28.1-15.8s-3.9-24.2-15.8-28.1l-64-15.4c-7.2-1.7-14.7-.5-20.9 3.4c-6.2 3.9-10.5 9.9-12.1 16.7l-20.3 81.3C406.8 149.6 384 183.9 384 224c0 53 43 96 96 96h16v64c0 17.7 14.3 32 32 32s32-14.3 32-32V384h16c17.7 0 32-14.3 32-32s-14.3-32-32-32H512V256C512 114.6 397.4 0 256 0zM128 256a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm256-32a32 32 0 1 1 -64 0 32 32 0 1 1 64 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: top right;
+            opacity: 0.5;
+        }
+        
+        .practice-section h3 {
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .practice-section h3 span {
+            background: var(--gradient-primary);
+            color: white;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Listas */
+        ul {
+            list-style-type: none;
+            margin: 1.5rem 0;
+        }
+        
+        ul li {
+            padding-left: 2rem;
+            position: relative;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        ul li:before {
+            content: "→";
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Elementos de acento */
+        .highlight {
+            background: rgba(67, 97, 238, 0.08);
+            border-left: 5px solid var(--primary);
+            padding: 1.8rem 2rem;
+            margin: 2.5rem 0;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight:before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            font-size: 8rem;
+            color: var(--primary);
+            opacity: 0.1;
+            font-family: Georgia, serif;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            margin-top: 4rem;
+            position: relative;
+        }
+        
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%234361ee' fill-opacity='0.1' d='M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,224C672,235,768,181,864,160C960,139,1056,149,1152,165.3C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: bottom;
+        }
+        
+        footer p {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .design-elements {
+                grid-template-columns: 1fr;
+            }
+            
+            header {
+                padding: 3rem 1rem;
+            }
+            
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            header p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        
+        /* Efectos de partículas */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+        
+        /* Iconos personalizados */
+        .icon-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            margin-right: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .icon-wrapper i {
+            color: white;
+            font-size: 1.8rem;
+        }
+        
+        /* Barra de progreso de lectura */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: transparent;
+            z-index: 1000;
+        }
+        
+        .progress-bar {
+            height: 5px;
+            background: var(--gradient-accent);
+            width: 0%;
+            transition: width 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="particles" id="particles"></div>
+
+    <header>
+        <div class="container">
+            <h1>Diseño Web & Mejores Prácticas</h1>
+            <p>Una guía visual basada en principios fundamentales de desarrollo de software</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="intro">
+            <h2>¿Qué es el Diseño de Software?</h2>
+            <p>El diseño de software es el proceso de construcción para la planificación de una <strong>solución informática</strong>. Este proceso ayuda a los programadores a manejar la complejidad de la mayoría de los programas informáticos y a disminuir el riesgo de errores en su puesta en marcha.</p>
+            
+            <div class="highlight">
+                <p>La calidad es la palabra clave que define la importancia del diseño, ya que es en esta etapa donde se establece la calidad del proyecto y se materializan con precisión los requerimientos del cliente.</p>
+            </div>
+        </section>
+
+        <section class="design-components">
+            <h2>Los 4 Elementos del Diseño de Software</h2>
+            <div class="design-elements">
+                <div class="design-card animate">
+                    <h3><span class="icon-wrapper"><i class="fas fa-database"></i></span> Diseño de Datos</h3>
+                    <p>Define la relación entre los elementos estructurales del programa. Establece cómo se organizarán, almacenarán y relacionarán los datos dentro del sistema.</p>
+                </div>
+                
+                <div class="design-card animate delay-1">
+                    <h3><span class="icon-wrapper"><i class="fas fa-sitemap"></i></span> Diseño Arquitectónico</h3>
+                    <p>Describe cómo se comunica el software internamente, con sistemas externos, y con operadores y usuarios. Define la estructura general del sistema.</p>
+                </div>
+                
+                <div class="design-card animate delay-2">
+                    <h3><span class="icon-wrapper"><i class="fas fa-palette"></i></span> Diseño de Interfaz</h3>
+                    <p>Describe la interacción del sistema con el usuario. Incluye todos los aspectos de la experiencia de usuario y la presentación visual.</p>
+                </div>
+                
+                <div class="design-card animate delay-3">
+                    <h3><span class="icon-wrapper"><i class="fas fa-puzzle-piece"></i></span> Diseño de Componentes</h3>
+                    <p>Es una descripción procedimental de cada parte especificada en el diseño arquitectónico. Detalla cómo funcionarán internamente los módulos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="best-practices">
+            <h2>Mejores Prácticas en Desarrollo de Software</h2>
+            
+            <div class="practice-section">
+                <h3><span>1</span> Programación Orientada a Objetos (POO)</h3>
+                <p>Un paradigma de programación que ofrece un modelo para resolver problemas, centrado en cómo encontrar soluciones. Es fundamental aprender y trabajar con POO para escribir código de calidad.</p>
+            </div>
+            
+            <div class="practice-section">
+                <h3><span>2</span> Principios SOLID</h3>
+                <p>Una guía de buenas prácticas para construir código más legible, mantenible y escalable, buscando reducir la complejidad:</p>
+                <ul>
+                    <li><strong>SRP (Single Responsibility)</strong>: Cada clase debe tener una única responsabilidad.</li>
+                    <li><strong>OCP (Open-Closed)</strong>: Las clases deben estar abiertas a la extensión pero cerradas a la modificación.</li>
+                    <li><strong>LSP (Liskov Substitution)</strong>: Las subclases deben poder sustituir a sus superclases.</li>
+                    <li><strong>ISP (Interface Segregation)</strong>: No forzar a las clases a implementar lo que no necesitan.</li>
+                    <li><strong>DIP (Dependency Inversion)</strong>: Los módulos deben depender de abstracciones, no de detalles concretos.</li>
+                </ul>
+            </div>
+            
+            <div class="practice-section">
+                <h3><span>3</span> Patrones de Diseño</h3>
+                <p>Ayudan a resolver problemas generales que surgen al seguir las reglas de los paradigmas de programación. Facilitan el cumplimiento de los "verdaderos paradigmas de programación" de la mejor manera posible.</p>
+            </div>
+            
+            <div class="practice-section">
+                <h3><span>4</span> Refactorización</h3>
+                <p>Es un cambio en la estructura interna del software para mejorar la comprensión y facilidad de modificación sin alterar su comportamiento observable. Es un proceso continuo de pequeños cambios incrementales.</p>
+            </div>
+            
+            <div class="practice-section">
+                <h3><span>5</span> Desarrollo Seguro (Security by Design)</h3>
+                <p>Implica integrar medidas de ciberseguridad desde las etapas iniciales del desarrollo. Esto incluye identificar requisitos de seguridad, establecer políticas y estándares, y diseñar la aplicación con una perspectiva de seguridad.</p>
+            </div>
+            
+            <div class="practice-section">
+                <h3><span>6</span> Arquitecturas Modernas</h3>
+                <p>Enfoques contemporáneos para construir software escalable y mantenible:</p>
+                <ul>
+                    <li><strong>Arquitectura de Microservicios</strong>: Divide una aplicación en servicios independientes.</li>
+                    <li><strong>Clean Architecture</strong>: Crea sistemas escalables con separación clara de responsabilidades.</li>
+                    <li><strong>Domain-Driven Design (DDD)</strong>: Sitúa el dominio del negocio como el foco del proyecto.</li>
+                    <li><strong>API RESTful</strong>: Diseño de APIs organizadas en torno a recursos con métodos HTTP consistentes.</li>
+                </ul>
+            </div>
+        </section>
+        
+        <div class="highlight">
+            <p>Un buen diseño debe implementar todos los requisitos explícitos, proporcionar una idea completa del software, presentar una organización jerárquica, ser modular, contener abstracciones y producir módulos con funcionamiento independiente.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Infografía basada en principios de diseño de software - Desarrollado con mejores prácticas frontend</p>
+        </div>
+    </footer>
+
+    <script>
+        // Script para animar elementos al hacer scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animate');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(element);
+            });
+            
+            // Crear partículas decorativas
+            const particlesContainer = document.getElementById('particles');
+            const colors = ['#4361ee', '#3a0ca3', '#f72585', '#4cc9f0', '#f9c74f'];
+            
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 20 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = color;
+                
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+            
+            // Barra de progreso de lectura
+            window.onscroll = function() {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById("progressBar").style.width = scrolled + "%";
+            };
+        });
+    </script>
+</body>
+</html>
